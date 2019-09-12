@@ -14,12 +14,28 @@ public class Arme {
     /**
      * @attribute
      */
-    private static Integer nextId;
+    private String type = "Arme";
 
     /**
      * @return the nextId
      */
-    public static Integer getNextId() {
-        return nextId;
+    public Integer getId() {
+        return id;
+    }
+
+    public String getType() {
+        return "Arme";
+    }
+
+    /**
+     * @return the puissance
+     */
+    public Integer getPuissance() {
+        return puissance;
+    }
+
+    @Override
+    public String toString() {
+        return "["+id+"] : "+type+" : Puissance : "+puissance+".";
     }
 }

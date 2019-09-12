@@ -3,29 +3,46 @@ package model;
 import java.util.ArrayList;
 
 public class Terrien extends Personnage {
+    
     /**
      * @attribute
      */
-    private static Integer forceDeBase;
+    private static int FORCE_DE_BASE;
 
     /**
      * @attribute
      */
-    private static Integer nextId;
+    private String type = "Terrien";
 
     /**
      * @attribute
      */
-    private ArrayList<Arme> listeArmes = new ArrayList()<Arme>;
+    private ArrayList<Arme> listeArmes = new ArrayList<Arme>();
+
+    public Terrien(Integer id, Integer forceDeBase) {
+        this.id = id;
+    }
 
     public void recevoirArme(Arme arme) {
         listeArmes.add(arme);
     }
 
     /**
-     * @return the nextId
+     * @param FORCE_DE_BASE the FORCE_DE_BASE to set
      */
-    public static Integer getNextId() {
-        return nextId;
+    public static void setFORCE_DE_BASE(int forceDeBase) {
+        Terrien.FORCE_DE_BASE = forceDeBAse;
+    }
+
+    public String getType(){
+        return "Terrien";
+    }
+
+    public Integer getDamageOutput(){
+        Integer dmg = FORCE_DE_BASE;
+        for (Arme arme : listeArmes) {
+            dmg += arme.getPuissance;
+        }
+        return dmg;
     }
 }

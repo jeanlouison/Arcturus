@@ -14,11 +14,12 @@ public abstract class Personnage {
     /**
      * @attribute
      */
-    private Integer id;
-    
-    public Personnage(){
-        
-    }
+    private String type;
+
+    /**
+     * @attribute
+     */
+    protected Integer id;
 
     public void frapper(Personnage personnage) {
         
@@ -28,8 +29,9 @@ public abstract class Personnage {
         
     }
 
+    @Override
     public String toString() {
-        return "["+id+"] : "+vie+" PV, "+force+" ATK.";
+        return "["+id+"] : "+type+" : "+vie+" PV, "+force+" ATK.";
     }
 
    /**
@@ -44,5 +46,12 @@ public abstract class Personnage {
     */
    public Integer getId() {
        return id;
+   }
+
+   /**
+    * @return the type
+    */
+   public String getType() {
+       return type;
    }
 }
