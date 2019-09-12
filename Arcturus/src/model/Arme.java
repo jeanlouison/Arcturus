@@ -16,6 +16,10 @@ public class Arme {
      */
     private static Integer nextId;
 
+    /**
+     * @return the nextId
+     */
     public static Integer getNextId() {
+        return nextId;
     }
 }

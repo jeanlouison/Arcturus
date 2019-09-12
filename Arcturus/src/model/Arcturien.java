@@ -6,6 +6,10 @@ public class Arcturien extends Personnage {
      */
     private static Integer nextId;
 
+    /**
+     * @return the nextId
+     */
     public static Integer getNextId() {
-    }
+        return nextId;
+    }  
 }

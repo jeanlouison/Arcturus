@@ -29,11 +29,20 @@ public abstract class Personnage {
     }
 
     public String toString() {
+        return "["+id+"] : "+vie+" PV, "+force+" ATK.";
     }
 
-    public Integer getVie() {
-    }
+   /**
+    * @return the vie
+    */
+   public Integer getVie() {
+       return vie;
+   }
 
-    public Integer getId() {
-    }
+   /**
+    * @return the id
+    */
+   public Integer getId() {
+       return id;
+   }
 }
