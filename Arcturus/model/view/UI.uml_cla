@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<xmi:XMI xmlns:xmi='http://www.omg.org/spec/XMI/20131001' xmlns:uml='http://www.omg.org/spec/UML/20131001'>
+ <documentation exporter='Oracle JDeveloper' exporterVersion='12.2.1.2.0'/>
+ <uml:Class xmi:type='uml:Class' xmi:uuid='urn:uuid:c1e0ceb5-813b-4bb9-a6b6-b6d9437da044'
+   isAbstract='false'
+   isActive='false'
+   isFinalSpecialization='false'
+   isLeaf='false'
+   name='UI'
+   visibility='public'>
+  <ownedOperation xmi:type='uml:Operation' xmi:uuid='urn:uuid:d5173f04-8e2d-4b2e-ba65-018fe6df482b'
+    isAbstract='false'
+    isLeaf='false'
+    isQuery='false'
+    isStatic='false'
+    name='init'
+    concurrency='sequential'
+    visibility='public'/>
+  <ownedOperation xmi:type='uml:Operation' xmi:uuid='urn:uuid:f7d29f8e-238d-43f9-9b28-8fc582267c64'
+    isAbstract='false'
+    isLeaf='false'
+    isQuery='false'
+    isStatic='false'
+    name='afficherMessage'
+    concurrency='sequential'
+    visibility='public'/>
+  <ownedOperation xmi:type='uml:Operation' xmi:uuid='urn:uuid:9b376066-abe4-4329-9059-0dc0fb6ec308'
+    isAbstract='false'
+    isLeaf='false'
+    isQuery='false'
+    isStatic='false'
+    name='lire'
+    concurrency='sequential'
+    visibility='public'/>
+  <packageImport xmi:type='uml:PackageImport' xmi:uuid='urn:uuid:475c2ee0-e237-4029-a70c-43e81e220120'
+    visibility='public'>
+   <importedPackage href='urn:uuid:47705235-c37c-410f-be7e-9e33b1b59f6a'/>
+  </packageImport>
+ </uml:Class>
+</xmi:XMI>
