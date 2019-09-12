@@ -21,12 +21,8 @@ public abstract class Personnage {
      */
     protected Integer id;
 
-    public void frapper(Personnage personnage) {
-        
-    }
-
-    protected void recevoirCoup(Integer degats) {
-        
+    public void recevoirCoup(Integer degats) {
+        vie -= degats;
     }
 
     @Override

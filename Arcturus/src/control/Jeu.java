@@ -19,7 +19,6 @@ public class Jeu {
      */
     private static int nextArmeId;
 
-
     /**
      * @attribute
      */
@@ -87,28 +86,39 @@ public class Jeu {
 
     public static String terrienFrappeArcturien(Integer idTerrien, Integer idArcturien){
         String res = "";
-        Terrien t = null;
-        Arcturien a; 
 
         if (getTerrien(idTerrien) != null && getArcturien(idArcturien) != null) {
             //les deux existent, on attaque
             Integer dmg = getTerrien(idTerrien).getDamageOutput();
-
-            //pas fini
-
+            getArcturien(idArcturien).recevoirCoup(dmg);
             res = idTerrien+" attaque "+idArcturien+" pour "+dmg+" dmg.";
         }
         else if (getTerrien(idTerrien) == null){
-            res += "ERR : Le terrien n'existe pas.\n";
+            res += "ERR : Le terrien demande n'existe pas.\n";
         }
         else if (getArcturien(idArcturien) == null){
-            res += "ERR : L'arcturien n'existe pas.\n";
+            res += "ERR : L'arcturien demande n'existe pas.\n";
         }
 
         return res;
     }
 
-    public static String arcturienFrappeTerrien(Integer idTerrien, Integer idArcturien){
+    public static String arcturienFrappeTerrien(Integer idArcturien, Integer idTerrien){
+        String res = "";
 
+        if (getTerrien(idTerrien) != null && getArcturien(idArcturien) != null) {
+            //les deux existent, on attaque
+            Integer dmg = getArcturien(idArcturien).getFORCE();
+            getTerrien(idTerrien).recevoirCoup(dmg);
+            res = idArcturien+" attaque "+idTerrien+" pour "+dmg+" dmg.";
+        }
+        else if (getTerrien(idTerrien) == null){
+            res += "ERR : Le terrien demande n'existe pas.\n";
+        }
+        else if (getArcturien(idArcturien) == null){
+            res += "ERR : L'arcturien demande n'existe pas.\n";
+        }
+
+        return res;
     }
 }
