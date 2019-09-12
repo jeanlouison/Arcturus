@@ -11,9 +11,6 @@ public class Arcturien extends Personnage {
      */
     private static int FORCE;
 
-    /**
-     * 
-     */
     public Arcturien(Integer id) {
         this.id = id;
     }

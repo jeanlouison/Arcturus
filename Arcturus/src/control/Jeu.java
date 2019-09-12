@@ -64,4 +64,51 @@ public class Jeu {
     public static void donnerArme(Integer terrien, Integer arme){
         terrien.recevoirArme(arme);
     }
+
+    public static Terrien getTerrien(Integer id){
+        Terrien t = null;
+        for (Terrien tcheck : listeTerriens) {
+            if (tcheck.getId() == id) {
+                t = tcheck;
+            }
+        }
+        return t;
+    }
+
+    public static Arcturien getArcturien(Integer id){
+        Arcturien a = null;
+        for (Arcturien acheck : listeArcturiens) {
+            if (acheck.getId() == id) {
+                a = acheck;
+            }
+        }
+        return a;
+    }
+
+    public static String terrienFrappeArcturien(Integer idTerrien, Integer idArcturien){
+        String res = "";
+        Terrien t = null;
+        Arcturien a; 
+
+        if (getTerrien(idTerrien) != null && getArcturien(idArcturien) != null) {
+            //les deux existent, on attaque
+            Integer dmg = getTerrien(idTerrien).getDamageOutput();
+
+            //pas fini
+
+            res = idTerrien+" attaque "+idArcturien+" pour "+dmg+" dmg.";
+        }
+        else if (getTerrien(idTerrien) == null){
+            res += "ERR : Le terrien n'existe pas.\n";
+        }
+        else if (getArcturien(idArcturien) == null){
+            res += "ERR : L'arcturien n'existe pas.\n";
+        }
+
+        return res;
+    }
+
+    public static String arcturienFrappeTerrien(Integer idTerrien, Integer idArcturien){
+
+    }
 }

@@ -12,11 +12,6 @@ public class Terrien extends Personnage {
     /**
      * @attribute
      */
-    private String type = "Terrien";
-
-    /**
-     * @attribute
-     */
     private ArrayList<Arme> listeArmes = new ArrayList<Arme>();
 
     public Terrien(Integer id, Integer forceDeBase) {
