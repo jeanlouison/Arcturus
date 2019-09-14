@@ -16,6 +16,10 @@ public class Arme {
      */
     private String type = "Arme";
 
+    public Arme(Integer id) {
+        this.id = id;
+    }
+
     /**
      * @return the nextId
      */

@@ -9,7 +9,7 @@ public class Arcturien extends Personnage {
     /**
      * @attribute
      */
-    private static int FORCE;
+    private static Integer FORCE;
 
     public Arcturien(Integer id) {
         this.id = id;
@@ -25,7 +25,7 @@ public class Arcturien extends Personnage {
     /**
      * @param FORCE the FORCE_DE_BASE to set
      */
-    public static void setFORCE_DE_BASE(int force) {
+    public static void setFORCE(int force) {
         Arcturien.FORCE = force;
     }
 

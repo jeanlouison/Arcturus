@@ -1,5 +1,7 @@
 package view;
-import arcturus.control.Jeu;
+
+import control.Jeu;
+
 import java.util.Scanner;
 
 class View {
@@ -11,7 +13,7 @@ class View {
         sc = new Scanner(System.in);
         sc.useDelimiter("\n");
 
-        Jeu.init();
+        Jeu.init(20, 200);
 		
 		while(true) {
 			int choix = View.menuPrincipal();
@@ -23,18 +25,21 @@ class View {
 				Jeu.creerTerrien();
 				break;
 			case 2:
-                Jeu.creerArcturien();
+                                Jeu.creerArcturien();
 				break;
 			case 3:
-                Jeu.creerArme();
+                                creerArme();
 				break;
 			case 4:
-                Jeu.donnerArme();
+                                donnerArme();
 				break;
 			case 5:
-                Jeu.frapper();
+                                arcturienFrappeTerrien();
 				break;
-			// case 6:
+                        case 6:
+                                terrienFrappeArcturien();
+                                break;
+			// case 7:
 			// 	information();
 			// 	break;
 			case 0:
@@ -73,15 +78,16 @@ class View {
 	 */
 	private static int menuPrincipal() {
 		System.out.print(  
-				" - - - - - - - - - - - -\n" +
-				"| 1 | Creer terrien     |\n" + 
-				"| 2 | Creer arcturien   |\n" + 
-				"| 3 | Creer arme        |\n" + 
-				"| 4 | Donner arme       |\n" + 
-				"| 5 | Frapper           |\n" +
-				"| 6 | Information       |\n" +
-				"| 0 | Finir             |\n" +
-				" - - - - - - - - - - - -\n? " 
+				" - - - - - - - - - - - - - -\n" +
+				"| 1 | Creer terrien         |\n" + 
+				"| 2 | Creer arcturien       |\n" + 
+				"| 3 | Creer arme            |\n" + 
+				"| 4 | Donner arme           |\n" + 
+				"| 5 | Arcturien vs. Terrien |\n" +
+                                "| 6 | Terrien vs. Arcturien |\n" +
+				"| 7 | Information           |\n" +
+				"| 0 | Finir                 |\n" +
+				" - - - - - - - - - - - - - -\n? " 
 				);
 		int[] choix = new int[] {-1};
 		try {
@@ -94,10 +100,10 @@ class View {
 	}
 
     private static void arreter() {
-		System.out.println("Taper 0 pour confirmer l'arrÃªt");
+		System.out.println("Taper 0 pour confirmer l'arret.");
 		int[] param = new int[1];
 		try {
-			Jeu.lireLigne(param);
+			lireLigne(param);
 		}
 		catch (Exception e) {
 			System.out.println( e.getMessage());
@@ -109,4 +115,56 @@ class View {
 			System.exit(0);
 		}
 	}
+
+    private static void creerArme() {
+        System.out.println("Puissance ?");
+        int[] param = {-1};
+        try {
+                lireLigne(param);
+        }
+        catch (Exception e) {
+                System.out.println( e.getMessage() );
+                return;
+        }
+        Jeu.creerArme(param[0]);
+    }
+
+    private static void donnerArme() {
+        System.out.println("Terrien ? Arme ?");
+        int[] param = new int[2];
+        try {
+                lireLigne(param);
+        }
+        catch (Exception e) {
+                System.out.println( e.getMessage() );
+                return;
+        }
+        Jeu.donnerArme(param[0], param[1]);
+    }
+
+    private static void arcturienFrappeTerrien() {
+        System.out.println("Arcturien ? Terrien ?");
+        int[] param = new int[2];
+        try {
+                lireLigne(param);
+        }
+        catch (Exception e) {
+                System.out.println( e.getMessage() );
+                return;
+        }
+        Jeu.arcturienFrappeTerrien(param[0], param[1]);
+    }
+
+    private static void terrienFrappeArcturien() {
+        System.out.println("Terrien ? Arcturien ?");
+        int[] param = new int[2];
+        try {
+                lireLigne(param);
+        }
+        catch (Exception e) {
+                System.out.println( e.getMessage() );
+                return;
+        }
+        Jeu.terrienFrappeArcturien(param[0], param[1]);
+    }
 }

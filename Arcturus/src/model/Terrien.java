@@ -14,7 +14,7 @@ public class Terrien extends Personnage {
      */
     private ArrayList<Arme> listeArmes = new ArrayList<Arme>();
 
-    public Terrien(Integer id, Integer forceDeBase) {
+    public Terrien(Integer id) {
         this.id = id;
     }
 
@@ -26,7 +26,7 @@ public class Terrien extends Personnage {
      * @param FORCE_DE_BASE the FORCE_DE_BASE to set
      */
     public static void setFORCE_DE_BASE(int forceDeBase) {
-        Terrien.FORCE_DE_BASE = forceDeBAse;
+        Terrien.FORCE_DE_BASE = forceDeBase;
     }
 
     public String getType(){
@@ -36,7 +36,7 @@ public class Terrien extends Personnage {
     public Integer getDamageOutput(){
         Integer dmg = FORCE_DE_BASE;
         for (Arme arme : listeArmes) {
-            dmg += arme.getPuissance;
+            dmg += arme.getPuissance();
         }
         return dmg;
     }
