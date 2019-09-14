@@ -2,7 +2,7 @@ package arcturus.view;
 
 import java.util.Scanner;
 
-import arcturus.control.controller;
+import control.Jeu;
 
 /**
  * Interface utilisateur.
@@ -11,14 +11,14 @@ import arcturus.control.controller;
  */
 public class Console {
 
-	private ControleurJeu cj;
+	private Jeu cj;
 	private Scanner sc;
 	
 	/**
 	 * Instancie la vue sur la console.
 	 * @param cj: contrÃ´leur
 	 */
-	public Console(ControleurJeu cj) {
+	public Console(Jeu cj) {
 		this.cj = cj;
 		
 		sc = new Scanner(System.in);
@@ -85,9 +85,9 @@ public class Console {
 	private int menuPrincipal() {
 		System.out.print(  
 				" - - - - - - - - - - - -\n" +
-				"| 1 | CrÃ©er terrien     |\n" + 
-				"| 2 | CrÃ©er arcturien   |\n" + 
-				"| 3 | CrÃ©er arme        |\n" + 
+				"| 1 | Creer terrien     |\n" + 
+				"| 2 | Creer arcturien   |\n" + 
+				"| 3 | Creer arme        |\n" + 
 				"| 4 | Donner arme       |\n" + 
 				"| 5 | Frapper           |\n" +
 				"| 6 | Information       |\n" +

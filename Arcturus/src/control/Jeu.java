@@ -1,5 +1,6 @@
-import java.util.ArrayList;
+package control;
 
+import java.util.ArrayList;
 import model.*;
 
 public class Jeu {
@@ -7,17 +8,17 @@ public class Jeu {
     /**
      * @attribute
      */
-    private static int nextTerrienId;
+    private static int nextTerrienId = 0;
 
     /**
      * @attribute
      */
-    private static int nextArcturienId;
+    private static int nextArcturienId = 0;
 
     /**
      * @attribute
      */
-    private static int nextArmeId;
+    private static int nextArmeId = 0;
 
     /**
      * @attribute
@@ -34,9 +35,9 @@ public class Jeu {
      */
     private static ArrayList<Terrien> listeTerriens = new ArrayList<Terrien>();
 
-    public Jeu(Integer fdb_terrien, Integer force_arcturien) {
-        Terrien.setFORCE_DE_BASE(fdb_terrien);
-        Arcturien.setFORCE(force_arcturien);
+    public static void init(Integer forceTerrien, Integer forceArcturien) {
+        Terrien.setFORCE_DE_BASE(forceTerrien);
+        Arcturien.setFORCE(forceArcturien);
     }
 
     public int creerArcturien(){
@@ -108,7 +109,7 @@ public class Jeu {
 
         if (getTerrien(idTerrien) != null && getArcturien(idArcturien) != null) {
             //les deux existent, on attaque
-            Integer dmg = getArcturien(idArcturien).getFORCE();
+            Integer dmg = Arcturien.getFORCE();
             getTerrien(idTerrien).recevoirCoup(dmg);
             res = idArcturien+" attaque "+idTerrien+" pour "+dmg+" dmg.";
         }
