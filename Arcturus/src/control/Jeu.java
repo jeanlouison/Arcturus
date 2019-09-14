@@ -61,7 +61,7 @@ public class Jeu {
         return newArme.getId();
     }
 
-    public static String donnerArme(Integer terrien, Integer arme){
+    public static void donnerArme(Integer terrien, Integer arme){
         String res = "";
 
         if (getTerrien(terrien) != null && getArme(arme) != null) {
@@ -76,7 +76,7 @@ public class Jeu {
             res += "ERR : L'arme demandee n'existe pas.\n";
         }
 
-        return res;
+        System.out.println(res);
         
     }
 
@@ -110,7 +110,7 @@ public class Jeu {
         return a;
     }
 
-    public static String terrienFrappeArcturien(Integer idTerrien, Integer idArcturien){
+    public static void terrienFrappeArcturien(Integer idTerrien, Integer idArcturien){
         String res = "";
 
         if (getTerrien(idTerrien) != null && getArcturien(idArcturien) != null) {
@@ -126,10 +126,10 @@ public class Jeu {
             res += "ERR : L'arcturien demande n'existe pas.\n";
         }
 
-        return res;
+        System.out.println(res);
     }
 
-    public static String arcturienFrappeTerrien(Integer idArcturien, Integer idTerrien){
+    public static void arcturienFrappeTerrien(Integer idArcturien, Integer idTerrien){
         String res = "";
 
         if (getTerrien(idTerrien) != null && getArcturien(idArcturien) != null) {
@@ -145,6 +145,6 @@ public class Jeu {
             res += "ERR : L'arcturien demande n'existe pas.\n";
         }
 
-        return res;
+        System.out.println(res);
     }
 }

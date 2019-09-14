@@ -127,6 +127,7 @@ class View {
                 return;
         }
         Jeu.creerArme(param[0]);
+        System.out.println("L'arme "+param[0]+" a bien ete cree");
     }
 
     private static void donnerArme() {
@@ -140,6 +141,7 @@ class View {
                 return;
         }
         Jeu.donnerArme(param[0], param[1]);
+        System.out.println("Le terrien "+param[0]+" recoit l'arme "+param[1]);
     }
 
     private static void arcturienFrappeTerrien() {
