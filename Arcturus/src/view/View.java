@@ -22,10 +22,10 @@ class View {
 			case -1:
 				break;
 			case 1:
-				Jeu.creerTerrien();
+				creerTerrien();
 				break;
 			case 2:
-                                Jeu.creerArcturien();
+                                creerArcturien();
 				break;
 			case 3:
                                 creerArme();
@@ -168,5 +168,13 @@ class View {
                 return;
         }
         Jeu.terrienFrappeArcturien(param[0], param[1]);
+    }
+
+    private static void creerTerrien() {
+        Jeu.creerTerrien();
+    }
+
+    private static void creerArcturien() {
+        Jeu.creerArcturien();
     }
 }
