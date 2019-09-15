@@ -57,7 +57,7 @@ public class Jeu {
     }
 
     public static int creerArme(Integer puissance){
-        Arme newArme = new Arme(Jeu.nextArmeId);
+        Arme newArme = new Arme(Jeu.nextArmeId, puissance);
         listeArmes.add(newArme);
         System.out.println("Arme "+nextArmeId+" ("+puissance+" dmg) cree avec succes");
         Jeu.nextArmeId++;
@@ -149,5 +149,51 @@ public class Jeu {
         }
 
         System.out.println(res);
+    }
+
+    public static String infoTerrien(Integer idTerrien) {
+        return getTerrien(idTerrien).toString();
+    }
+
+    public static String infoArme(Integer idArme) {
+        return getArme(idArme).toString();
+    }
+
+    public static String infoArcturien(Integer idArcturien) {
+        return getArcturien(idArcturien).toString();
+    }
+
+    public static String enumTerriens(){
+        String res = "{ ";
+        for (Terrien t : Jeu.listeTerriens) {
+            if (t.getVie() > 0) {
+                res += t.getId();
+                res += " ";
+            }
+        }
+        res += "}";
+        return res;
+    }
+
+    public static String enumArmes(){
+        String res = "{ ";
+        for (Arme a : Jeu.listeArmes) {
+            res += a.getId();
+            res += " ";
+        }
+        res += "}";
+        return res;
+    }
+
+    public static String enumArcturiens(){
+        String res = "{ ";
+        for (Arcturien a : Jeu.listeArcturiens) {
+            if (a.getVie() > 0) {
+                res += a.getId();
+                res += " ";
+            }
+        }
+        res += "}";
+        return res;
     }
 }

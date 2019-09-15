@@ -25,23 +25,23 @@ class View {
 				creerTerrien();
 				break;
 			case 2:
-                                creerArcturien();
+                creerArcturien();
 				break;
 			case 3:
-                                creerArme();
+                creerArme();
 				break;
 			case 4:
-                                donnerArme();
+                donnerArme();
 				break;
 			case 5:
-                                arcturienFrappeTerrien();
+                arcturienFrappeTerrien();
 				break;
-                        case 6:
-                                terrienFrappeArcturien();
-                                break;
-			// case 7:
-			// 	information();
-			// 	break;
+			case 6:
+                terrienFrappeArcturien();
+                break;
+			case 7:
+				information();
+				break;
 			case 0:
 				arreter();
 				break;
@@ -51,11 +51,13 @@ class View {
 		}		
     }
 
-    /* (non javadoc)
-	 * Lecture controlÃ©e.
-	 * @param: tableau d'entier Ã  remplir par l'utilisateur
-	 * @throw RuntimeException si l'utilsateur frappe une rÃ©ponse 
-	 * non entiÃ¨re ou ne fournit pas assez d'arguments
+	/*
+	 * (non javadoc) Lecture controlÃ©e.
+	 * 
+	 * @param: tableau d'entier Ã remplir par l'utilisateur
+	 * 
+	 * @throw RuntimeException si l'utilsateur frappe une rÃ©ponse non entiÃ¨re ou
+	 * ne fournit pas assez d'arguments
 	 */
 	private static void lireLigne(int[] param) {
 		String[] ligne = sc.next().split("\\s");	
@@ -84,7 +86,7 @@ class View {
 				"| 3 | Creer arme            |\n" + 
 				"| 4 | Donner arme           |\n" + 
 				"| 5 | Arcturien vs. Terrien |\n" +
-                                "| 6 | Terrien vs. Arcturien |\n" +
+                "| 6 | Terrien vs. Arcturien |\n" +
 				"| 7 | Information           |\n" +
 				"| 0 | Finir                 |\n" +
 				" - - - - - - - - - - - - - -\n? " 
@@ -116,6 +118,64 @@ class View {
 		}
 	}
 
+	private static void information() {
+		//choix de l'information souhaitee
+		System.out.print(	"| 1 | Informations terrien   |\n" + 
+							"| 2 | Informations arcturien |\n" + 
+							"| 3 | Informations arme      |\n");
+        int[] choix = {-1};
+        try {
+			lireLigne(choix);
+        }
+        catch (Exception e) {
+			System.out.println("Saisir un entier ...");
+			return;
+		}
+        switch(choix[0]) {
+			case -1 :
+				System.out.println("id non valide");
+				break;
+			case 1 :
+				System.out.println("Sur quel terrien voulez vous en savoir + ? liste des terriens vivants :");
+				System.out.println(Jeu.enumTerriens());
+				int[] choixTerrien = {-1};
+				try {
+					lireLigne(choixTerrien);
+				}
+				catch (Exception e) {
+					System.out.println("Saisir un entier ...");
+					break;
+				}
+				System.out.println(Jeu.infoTerrien(choixTerrien[0]));
+
+			case 2 :
+				System.out.println("Sur quel arcturien voulez vous en savoir + ? liste des arcturiens vivants :");
+				System.out.println(Jeu.enumArcturiens());
+				int[] choixArcturien = {-1};
+				try {
+					lireLigne(choixArcturien);
+				}
+				catch (Exception e) {
+					System.out.println("Saisir un entier ...");
+					break;
+				}
+				System.out.println(Jeu.infoArcturien(choixArcturien[0]));
+
+			case 3 :
+			System.out.println("Sur quel arme voulez vous en savoir + ? liste des armes :");
+				System.out.println(Jeu.enumArmes());
+				int[] choixArme = {-1};
+				try {
+					lireLigne(choixArme);
+				}
+				catch (Exception e) {
+					System.out.println("Saisir un entier ...");
+					break;
+				}
+				System.out.println(Jeu.infoArme(choixArme[0]));
+		}
+	}
+
     private static void creerArme() {
         System.out.println("Puissance ?");
         int[] param = {-1};
@@ -123,8 +183,8 @@ class View {
                 lireLigne(param);
         }
         catch (Exception e) {
-                System.out.println( e.getMessage() );
-                return;
+			System.out.println( e.getMessage() );
+			return;
         }
         Jeu.creerArme(param[0]);
     }

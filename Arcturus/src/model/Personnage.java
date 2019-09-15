@@ -22,7 +22,7 @@ public abstract class Personnage {
     protected Integer id;
 
     public void recevoirCoup(Integer degats) {
-        vie -= degats;
+        this.vie -= degats;
     }
 
     @Override

@@ -19,7 +19,7 @@ public class Terrien extends Personnage {
     }
 
     public void recevoirArme(Arme arme) {
-        listeArmes.add(arme);
+        this.listeArmes.add(arme);
     }
 
     /**
@@ -39,5 +39,10 @@ public class Terrien extends Personnage {
             dmg += arme.getPuissance();
         }
         return dmg;
+    }
+
+    @Override
+    public String toString() {
+        return "["+id+"] : "+this.getType()+" : "+this.getVie()+" PV, "+this.getDamageOutput()+" ATK.";
     }
 }

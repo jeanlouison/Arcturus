@@ -16,8 +16,9 @@ public class Arme {
      */
     private String type = "Arme";
 
-    public Arme(Integer id) {
+    public Arme(Integer id, Integer puissance) {
         this.id = id;
+        this.puissance = puissance;
     }
 
     /**
