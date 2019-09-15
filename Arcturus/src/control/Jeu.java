@@ -59,7 +59,7 @@ public class Jeu {
     public static int creerArme(Integer puissance){
         Arme newArme = new Arme(Jeu.nextArmeId);
         listeArmes.add(newArme);
-        System.out.println("Arme "+nextArcturienId+" ("+puissance+" dmg) cree avec succes");
+        System.out.println("Arme "+nextArmeId+" ("+puissance+" dmg) cree avec succes");
         Jeu.nextArmeId++;
         return newArme.getId();
     }

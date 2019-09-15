@@ -127,7 +127,6 @@ class View {
                 return;
         }
         Jeu.creerArme(param[0]);
-        System.out.println("L'arme "+param[0]+" a bien ete cree");
     }
 
     private static void donnerArme() {
