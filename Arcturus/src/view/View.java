@@ -120,9 +120,11 @@ class View {
 
 	private static void information() {
 		//choix de l'information souhaitee
-		System.out.print(	"| 1 | Informations terrien   |\n" + 
+		System.out.print(	" - - - - - - - - - - - - - - -\n" +
+							"| 1 | Informations terrien   |\n" + 
 							"| 2 | Informations arcturien |\n" + 
-							"| 3 | Informations arme      |\n");
+							"| 3 | Informations arme      |\n" +
+							" - - - - - - - - - - - - - - -\n");
         int[] choix = {-1};
         try {
 			lireLigne(choix);
@@ -133,7 +135,6 @@ class View {
 		}
         switch(choix[0]) {
 			case -1 :
-				System.out.println("id non valide");
 				break;
 			case 1 :
 				System.out.println("Sur quel terrien voulez vous en savoir + ? liste des terriens vivants :");
@@ -190,7 +191,9 @@ class View {
     }
 
     private static void donnerArme() {
-        System.out.println("Terrien ? Arme ?");
+		System.out.println("Terrien ? Arme ?");
+		System.out.println("Liste des terriens : "+Jeu.enumTerriens());
+		System.out.println("Liste des armes : "+Jeu.enumArmes());
         int[] param = new int[2];
         try {
                 lireLigne(param);
@@ -200,7 +203,6 @@ class View {
                 return;
         }
         Jeu.donnerArme(param[0], param[1]);
-        System.out.println("Le terrien "+param[0]+" recoit l'arme "+param[1]);
     }
 
     private static void arcturienFrappeTerrien() {

@@ -78,15 +78,13 @@ public class Jeu {
         else if (getArme(arme) == null){
             res += "ERR : L'arme demandee n'existe pas.\n";
         }
-
         System.out.println(res);
-        
     }
 
     public static Terrien getTerrien(Integer id){
         Terrien t = null;
         for (Terrien tcheck : listeTerriens) {
-            if (tcheck.getId() == id) {
+            if (tcheck.getId() == id && tcheck.getVie() > 0) {
                 t = tcheck;
             }
         }
@@ -96,7 +94,7 @@ public class Jeu {
     public static Arcturien getArcturien(Integer id){
         Arcturien a = null;
         for (Arcturien acheck : listeArcturiens) {
-            if (acheck.getId() == id) {
+            if (acheck.getId() == id && acheck.getVie() > 0) {
                 a = acheck;
             }
         }
@@ -120,7 +118,7 @@ public class Jeu {
             //les deux existent, on attaque
             Integer dmg = getTerrien(idTerrien).getDamageOutput();
             getArcturien(idArcturien).recevoirCoup(dmg);
-            res = idTerrien+" attaque "+idArcturien+" pour "+dmg+" dmg.\n";
+            res = "Le terrien "+idTerrien+" attaque "+idArcturien+" pour "+dmg+" dmg.\n";
         }
         else if (getTerrien(idTerrien) == null){
             res += "ERR : Le terrien demande n'existe pas.\n";
@@ -139,7 +137,7 @@ public class Jeu {
             //les deux existent, on attaque
             Integer dmg = Arcturien.getFORCE();
             getTerrien(idTerrien).recevoirCoup(dmg);
-            res = idArcturien+" attaque "+idTerrien+" pour "+dmg+" dmg.\n";
+            res = "L'arcturien "+idArcturien+" attaque "+idTerrien+" pour "+dmg+" dmg.\n";
         }
         else if (getTerrien(idTerrien) == null){
             res += "ERR : Le terrien demande n'existe pas.\n";
@@ -152,7 +150,13 @@ public class Jeu {
     }
 
     public static String infoTerrien(Integer idTerrien) {
-        return getTerrien(idTerrien).toString();
+        String res;
+        if (getTerrien(idTerrien).getVie() <= 0){
+            res = "Le terrien "+idTerrien+" est mort ! Ne reveillez pas un fantome...";
+        } else {
+            res = getTerrien(idTerrien).toString();
+        }
+        return res;
     }
 
     public static String infoArme(Integer idArme) {
@@ -160,7 +164,13 @@ public class Jeu {
     }
 
     public static String infoArcturien(Integer idArcturien) {
-        return getArcturien(idArcturien).toString();
+        String res;
+        if (getArcturien(idArcturien).getVie() <= 0){
+            res = "L'arcturien "+idArcturien+" est mort ! Ne reveillez pas un fantome...";
+        } else {
+            res = getArcturien(idArcturien).toString();
+        }
+        return res;
     }
 
     public static String enumTerriens(){
