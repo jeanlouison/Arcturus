@@ -3,40 +3,60 @@ package model;
 public class Arcturien extends Personnage {
     /**
      * @attribute
+     * id de l'arcturien.
      */
     private Integer id;
 
     /**
      * @attribute
+     * force de l'arcturien.
      */
-    private static Integer FORCE;
+    private static Integer force;
 
+    /**
+     * Constructeur
+     * Attribue a l'arcturien l'id passe en parametre
+     * @param id
+     */
     public Arcturien(Integer id) {
         this.id = id;
     }
 
     /**
-     * @return the nextId
+     * @return l'id de l'arcturien
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     * @param FORCE the FORCE_DE_BASE to set
+     * @param force the force to set
      */
-    public static void setFORCE(int force) {
-        Arcturien.FORCE = force;
+    public static void setForce(int force) {
+        Arcturien.force = force;
     }
 
     /**
-     * @return the fORCE_DE_BASE
+     * @return the force
      */
-    public static int getFORCE() {
-        return FORCE;
+    public static int getForce() {
+        return force;
     }
 
+    /**
+     * Renvoie le type du personnage sous forme de texte.
+     * @return "Arcturien"
+     */
     public String getType(){
         return "Arcturien";
+    }
+
+    /**
+     * Renvoie des informations sur l'arcturien sous forme de texte.
+     * @return informations sur l'arcturien.
+     */
+    @Override
+    public String toString() {
+        return "["+id+"] : "+this.getType()+" : "+this.getVie()+" PV, "+Arcturien.getForce()+" ATK.";
     }
 }

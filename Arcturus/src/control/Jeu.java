@@ -7,39 +7,55 @@ public class Jeu {
 
     /**
      * @attribute
+     * Id attribue au prochain terrien cree.
      */
     private static Integer nextTerrienId = 0;
 
     /**
      * @attribute
+     * Id attribue au prochain arcturien cree.
      */
     private static Integer nextArcturienId = 0;
 
     /**
      * @attribute
+     * Id attribue a la prochaine arme cree.
      */
     private static Integer nextArmeId = 0;
 
     /**
      * @attribute
+     * Liste des arcturiens
      */
     private static ArrayList<Arcturien> listeArcturiens = new ArrayList<Arcturien>();
 
     /**
      * @attribute
+     * Liste des armes
      */
     private static ArrayList<Arme> listeArmes = new ArrayList<Arme>();
 
     /**
      * @attribute
+     * Liste des terriens
      */
     private static ArrayList<Terrien> listeTerriens = new ArrayList<Terrien>();
 
+    /**
+     * Fonction d'initialisation du jeu, qui definit les valeurs par defauts de la force des terriens et des arcturiens.
+     * @param forceTerrien
+     * @param forceArcturien
+     */
     public static void init(Integer forceTerrien, Integer forceArcturien) {
         Terrien.setFORCE_DE_BASE(forceTerrien);
-        Arcturien.setFORCE(forceArcturien);
+        Arcturien.setForce(forceArcturien);
     }
 
+    /**
+     * Instancie un nouvel arcturien et l'ajoute a la liste.
+     * Imprime un message de succes et incremente l'id suivant.
+     * @return id de l'arcturien cree
+     */
     public static int creerArcturien(){
         Arcturien newArcturien = new Arcturien(Jeu.nextArcturienId);
         listeArcturiens.add(newArcturien);
@@ -48,6 +64,11 @@ public class Jeu {
         return newArcturien.getId();
     }
 
+    /**
+     * Instancie un nouveau terrien et l'ajoute a la liste.
+     * Imprime un message de succes et incremente l'id suivant.
+     * @return id du terrien cree
+     */
     public static int creerTerrien(){
         Terrien newTerrien = new Terrien(Jeu.nextTerrienId);
         listeTerriens.add(newTerrien);
@@ -56,6 +77,11 @@ public class Jeu {
         return newTerrien.getId();
     }
 
+    /**
+     * Instancie une nouvelle et l'ajoute a la liste.
+     * Imprime un message de succes et incremente l'id suivant.
+     * @return id de l'arme cree
+     */
     public static int creerArme(Integer puissance){
         Arme newArme = new Arme(Jeu.nextArmeId, puissance);
         listeArmes.add(newArme);
@@ -64,6 +90,12 @@ public class Jeu {
         return newArme.getId();
     }
 
+    /**
+     * Donne l'arme dont l'id est passee en parametre au terrien dont l'id est passe en parametre.
+     * Affiche des messages de succes ou d'echec.
+     * @param terrien
+     * @param arme
+     */
     public static void donnerArme(Integer terrien, Integer arme){
         String res = "";
 
@@ -81,6 +113,11 @@ public class Jeu {
         System.out.println(res);
     }
 
+    /**
+     * Cherche dans la liste des terriens le terrien dont l'id est passe en parametre.
+     * @param id
+     * @return le terrien dont l'id est passe en parametre
+     */
     public static Terrien getTerrien(Integer id){
         Terrien t = null;
         for (Terrien tcheck : listeTerriens) {
@@ -91,6 +128,11 @@ public class Jeu {
         return t;
     }
 
+    /**
+     * Cherche dans la liste des arcturiens l'arcturien dont l'id est passe en parametre.
+     * @param id
+     * @return l'arcturien dont l'id est passe en parametre
+     */
     public static Arcturien getArcturien(Integer id){
         Arcturien a = null;
         for (Arcturien acheck : listeArcturiens) {
@@ -101,6 +143,11 @@ public class Jeu {
         return a;
     }
     
+    /**
+     * Cherche dans la liste des armes l'arme dont l'id est passe en parametre.
+     * @param id
+     * @return l'arme dont l'id est passe en parametre
+     */
     public static Arme getArme(Integer id){
         Arme a = null;
         for (Arme acheck : listeArmes) {
@@ -111,6 +158,14 @@ public class Jeu {
         return a;
     }
 
+    /**
+     * Cherche dans la liste des terriens le terrien dont l'id est passe en parametre,
+     * et cherche dans la liste des arcturiens l'arcturien dont l'id est passe en parametre.
+     * Inflige des degats a l'arcturien passe en parametre egaux a la force du terrien passe en parametre.
+     * Affiche des messages de succes ou d'erreur.
+     * @param idTerrien
+     * @param idArcturien
+     */
     public static void terrienFrappeArcturien(Integer idTerrien, Integer idArcturien){
         String res = "";
 
@@ -130,12 +185,20 @@ public class Jeu {
         System.out.println(res);
     }
 
+    /**
+     * Cherche dans la liste des arcturiens l'arcturien dont l'id est passe en parametre,
+     * et cherche dans la liste des terriens le terrien dont l'id est passe en parametre.
+     * Inflige des degats au terrien passe en parametre egaux a la force de l'arcturien passe en parametre.
+     * Affiche des messages de succes ou d'erreur.
+     * @param idArcturien
+     * @param idTerrien
+     */
     public static void arcturienFrappeTerrien(Integer idArcturien, Integer idTerrien){
         String res = "";
 
         if (getTerrien(idTerrien) != null && getArcturien(idArcturien) != null) {
             //les deux existent, on attaque
-            Integer dmg = Arcturien.getFORCE();
+            Integer dmg = Arcturien.getForce();
             getTerrien(idTerrien).recevoirCoup(dmg);
             res = "L'arcturien "+idArcturien+" attaque "+idTerrien+" pour "+dmg+" dmg.\n";
         }
@@ -149,6 +212,11 @@ public class Jeu {
         System.out.println(res);
     }
 
+    /**
+     * Donne des informations sur le terrien dont l'id est passe en parametre.
+     * @param idTerrien
+     * @return informations sur le terrien dont l'id est passe en parametre.
+     */
     public static String infoTerrien(Integer idTerrien) {
         String res;
         if (getTerrien(idTerrien).getVie() <= 0){
@@ -159,10 +227,20 @@ public class Jeu {
         return res;
     }
 
+    /**
+     * Donne des informations sur l'arme dont l'id est passe en parametre.
+     * @param idArme
+     * @return informations sur l'arme dont l'id est passe en parametre.
+     */
     public static String infoArme(Integer idArme) {
         return getArme(idArme).toString();
     }
 
+    /**
+     * Donne des informations sur l'arcturien dont l'id est passe en parametre.
+     * @param idArcturien
+     * @return informations sur l'arcturien dont l'id est passe en parametre.
+     */
     public static String infoArcturien(Integer idArcturien) {
         String res;
         if (getArcturien(idArcturien).getVie() <= 0){
@@ -173,6 +251,10 @@ public class Jeu {
         return res;
     }
 
+    /**
+     * Renvoie la liste des terriens sous forme de texte.
+     * @return liste des terriens.
+     */
     public static String enumTerriens(){
         String res = "{ ";
         for (Terrien t : Jeu.listeTerriens) {
@@ -185,6 +267,10 @@ public class Jeu {
         return res;
     }
 
+    /**
+     * Renvoie la liste des armes sous forme de texte.
+     * @return liste des armes.
+     */
     public static String enumArmes(){
         String res = "{ ";
         for (Arme a : Jeu.listeArmes) {
@@ -195,6 +281,10 @@ public class Jeu {
         return res;
     }
 
+    /**
+     * Renvoie la liste des arcturiens sous forme de texte.
+     * @return liste des arcturiens.
+     */
     public static String enumArcturiens(){
         String res = "{ ";
         for (Arcturien a : Jeu.listeArcturiens) {

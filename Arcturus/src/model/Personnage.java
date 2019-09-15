@@ -1,33 +1,25 @@
 package model;
 
 public abstract class Personnage {
-    /**
-     * @attribute
-     */
-    private Integer force;
 
     /**
      * @attribute
+     * vie du personnage
      */
     private Integer vie = 200;
 
     /**
      * @attribute
-     */
-    private String type;
-
-    /**
-     * @attribute
+     * id du personnage
      */
     protected Integer id;
 
+    /**
+     * enleve des points de vie du personnage en fonction des degats passes en parametre.
+     * @param degats
+     */
     public void recevoirCoup(Integer degats) {
         this.vie -= degats;
-    }
-
-    @Override
-    public String toString() {
-        return "["+id+"] : "+type+" : "+vie+" PV, "+force+" ATK.";
     }
 
    /**
@@ -48,6 +40,6 @@ public abstract class Personnage {
     * @return the type
     */
    public String getType() {
-       return type;
+       return "Personnage";
    }
 }
